@@ -1,9 +1,9 @@
-
+import numpy as np
 
 def test_case(t_input, t_output, function_to_test, additional_args):
     try:
         out = function_to_test(t_input, **additional_args)
-        if out == t_output:
+        if np.all(out == t_output):
             print(f"Test on input {t_input}: Pass")
         else:
             print(f"Test on input {t_input}: Fail. Expected {t_output} but received {out}")
