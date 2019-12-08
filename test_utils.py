@@ -1,8 +1,8 @@
 
 
-def test_case(t_input, t_output, function_to_test):
+def test_case(t_input, t_output, function_to_test, additional_args):
     try:
-        out = function_to_test(t_input)
+        out = function_to_test(t_input, **additional_args)
         if out == t_output:
             print(f"Test on input {t_input}: Pass")
         else:
@@ -16,6 +16,7 @@ def run_tests_for_part(part, test_cases, function_to_test):
     print(f"Running tests for part {part}")
     print("------------------------------")
     for test in test_cases:
-        test_case(test[0], test[1], function_to_test)
+        additional_args = {} if len(test) == 2 else test[2]
+        test_case(test[0], test[1], function_to_test, additional_args)
     print("------------------------------")
     print("")
